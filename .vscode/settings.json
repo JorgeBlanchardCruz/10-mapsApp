@@ -1,0 +1,19 @@
+{
+    "files.exclude": {
+        "tsconfig.spec.json": true,
+        "tsconfig.json": true,
+        "tsconfig.app.json": true,
+        "README.md": true,
+        "package.json": true,
+        "package-lock.json": true,
+        "angular.json": true,
+        ".gitignore": true,
+        ".editorconfig": true,
+        "src/styles.css": true,
+        "src/main.ts": true,
+        "src/index.html": true,
+        "src/favicon.ico": true,
+        "src/assets": true,
+        "node_modules": true
+    }
+}
