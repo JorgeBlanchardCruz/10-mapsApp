@@ -11,7 +11,7 @@
         ".editorconfig": true,
         "src/styles.css": true,
         "src/main.ts": true,
-        "src/index.html": true,
+        "src/index.html": false,
         "src/favicon.ico": true,
         "src/assets": true,
         "node_modules": true,

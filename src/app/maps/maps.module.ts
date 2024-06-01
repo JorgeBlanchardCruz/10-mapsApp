@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import mapboxgl from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
+mapboxgl.accessToken = 'pk.eyJ1Ijoicm90aGdhcmQiLCJhIjoiY2x3dndlNG1oMHRwejJscjNrODl2Nzk3OSJ9.mEs2dyiEa38ESHFCzsFlVw';
+
 import { MapsRoutingModule } from './maps-routing.module';
 import { MiniMapComponent } from './components/mini-map/mini-map.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
