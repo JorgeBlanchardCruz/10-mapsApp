@@ -3,18 +3,21 @@
         "tsconfig.spec.json": true,
         "tsconfig.json": true,
         "tsconfig.app.json": true,
-        "README.md": false,
-        "package.json": false,
+        "README.md": true,
+        "package.json": true,
         "package-lock.json": true,
         "angular.json": true,
-        ".gitignore": false,
+        ".gitignore": true,
         ".editorconfig": true,
         "src/styles.css": true,
         "src/main.ts": true,
-        "src/index.html": false,
+        "src/index.html": true,
         "src/favicon.ico": true,
         "src/assets": true,
         "node_modules": true,
-        ".angular": true
+        ".angular": true,
+        "src/.env.template": true,
+        "src/.env": true,
+        "src/environments": true
     }
 }
