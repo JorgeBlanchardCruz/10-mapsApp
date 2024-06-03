@@ -6,6 +6,11 @@ interface MarkerAndColor {
   color: string;
 }
 
+interface PlainMarker {
+  lngLat: number[];
+  color: string;
+}
+
 @Component({
   templateUrl: './markers-page.component.html',
   styleUrl: './markers-page.component.css'
@@ -30,8 +35,10 @@ export class MarkersPageComponent {
       zoom: this.zoomLevel, // starting zoom
     });
 
-    const markerHtml = document.createElement('div');
-    markerHtml.innerHTML = 'Jorge Blanchard';
+    this.readFromLocalStorage();
+
+    // const markerHtml = document.createElement('div');
+    // markerHtml.innerHTML = 'Jorge Blanchard';
 
     // const marker = new Marker({
     //     element: markerHtml,
@@ -46,7 +53,7 @@ export class MarkersPageComponent {
     this.map?.remove();
   }
 
-  createMarker() {
+  public createMarker() {
     if ( !this.map )
       return;
 
@@ -56,7 +63,7 @@ export class MarkersPageComponent {
     this.addMarker(lngLat, color);
   }
 
-  addMarker(lngLat: LngLat, color: string = 'blue') {
+  public addMarker(lngLat: LngLat, color: string = 'blue') {
     if ( !this.map )
       return;
 
@@ -68,20 +75,48 @@ export class MarkersPageComponent {
       .addTo(this.map!);
 
     this.markers.push( {marker, color} );
+
+    this.saveToLocalStorage();
   }
 
-  removeMarker(index: number) {
+  public removeMarker(index: number) {
     this.markers[index].marker.remove();
     this.markers.splice(index, 1);
+
+    this.saveToLocalStorage();
   }
 
-  flyTo( marker: Marker ) {
+  public flyTo( marker: Marker ) {
 
     this.map?.flyTo( {
       zoom: 14,
       center: marker.getLngLat()
     } );
 
+  }
+
+  public saveToLocalStorage() {
+    const plainMarkers: PlainMarker[] = this.markers.map( ({ marker, color }) => {
+      return {
+        lngLat: marker.getLngLat().toArray(),
+        color: color
+      };
+    });
+
+    localStorage.setItem('plainMarkers', JSON.stringify(plainMarkers));
+  }
+
+  public readFromLocalStorage() {
+    const plainMarkersString = localStorage.getItem('plainMarkers') ?? '';
+    if ( !plainMarkersString )
+      return;
+
+    const plainMarkers: PlainMarker[] = JSON.parse(plainMarkersString);
+
+    plainMarkers.forEach( ({ lngLat, color }) => {
+      const coords = new LngLat(lngLat[0], lngLat[1]);
+      this.addMarker(coords, color);
+    });
   }
 
 }
