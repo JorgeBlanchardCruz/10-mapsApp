@@ -17,8 +17,7 @@ interface PlainMarker {
 })
 export class MarkersPageComponent {
 
-  @ViewChild('map')
-  public divMap?: ElementRef;
+  @ViewChild('map') public divMap?: ElementRef;
   public map?: Map;
   public currentLngLat: LngLat = new LngLat(-4.622693679921895, 56.60590866782928);
   public zoomLevel: number = 10;
