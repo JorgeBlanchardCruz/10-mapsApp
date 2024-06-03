@@ -24,8 +24,13 @@ export class MiniMapComponent {
       container: this.divMap.nativeElement,
       style: 'mapbox://styles/mapbox/streets-v12',
       center: new LngLat(this.lngLat[0], this.lngLat[1]),
-      zoom: 10,
+      zoom: 15,
+      interactive: false
     });
+
+    new Marker()
+      .setLngLat(this.lngLat)
+      .addTo(this.map);
 
   }
 }
