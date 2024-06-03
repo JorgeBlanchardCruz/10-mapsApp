@@ -74,6 +74,9 @@ export class MarkersPageComponent {
       .setLngLat(lngLat)
       .addTo(this.map!);
 
+    marker.on('dragend', () => { this.saveToLocalStorage(); });
+
+
     this.markers.push( {marker, color} );
 
     this.saveToLocalStorage();
