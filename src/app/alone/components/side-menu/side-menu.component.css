@@ -4,3 +4,10 @@ li {
   border-bottom: 1px solid #f0f0f0;
   transition: 0.7 all;
 }
+
+ul {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
