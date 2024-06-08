@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-counter-alone',
+  selector: 'counter-alone',
   standalone: true,
   imports: [],
   templateUrl: './counter-alone.component.html',
@@ -9,4 +9,6 @@ import { Component } from '@angular/core';
 })
 export class CounterAloneComponent {
 
+  @Input()
+  public counter: number = 0;
 }
